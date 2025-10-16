@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudVPS - Jual VPS & RDP Murah dan Cepat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login, .btn-register {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-register {
+            background: white;
+            color: #1e40af;
+        }
+
+        .btn-login:hover, .btn-register:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .btn-hero {
+            background: white;
+            color: #1e40af;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(30,64,175,0.2);
+            border-color: #3b82f6;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .product-specs {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-specs li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: #1e40af;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+
+        .product-price span {
+            font-size: 1rem;
+            color: #64748b;
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(30,64,175,0.4);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #475569;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #1e40af;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30,64,175,0.4);
+        }
+
+        /* QRIS Payment */
+        .qris-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .qris-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            margin: 2rem auto;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed #3b82f6;
+        }
+
+        .qris-instructions {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .order-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-paid {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-active {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .order-table {
+                font-size: 0.875rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">☁️ CloudVPS</div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                <li><a href="#produk" onclick="showPage('home')">Produk</a></li>
+                <li><a href="#cara-order">Cara Order</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn-login" onclick="showModal('login')">Login</a>
+                <a href="#" class="btn-register" onclick="showModal('register')">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home-section">
+        <div class="hero-content">
+            <h1>Jual VPS & RDP Murah dan Cepat</h1>
+            <p>Server berkualitas dengan harga terjangkau untuk kebutuhan bisnis Anda</p>
+            <button class="btn-hero" onclick="document.getElementById('produk').scrollIntoView({behavior: 'smooth'})">
+                Order Sekarang
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Products Section -->
+        <div class="container" id="produk">
+            <h2 class="section-title">Paket VPS & RDP</h2>
+            <div class="products-grid">
+                <!-- Paket 1 -->
+                <div class="product-card">
+                    <div class="product-icon">🖥️</div>
+                    <h3 class="product-title">Paket Starter</h3>
+                    <ul class="product-specs">
+                        <li><strong>CPU:</strong> 1 Core</li>
+                        <li><strong>RAM:</strong> 1 GB</li>
+                        <li><strong>OS:</strong> Windows Server 2008</li>
+                        <li><strong>Bandwidth:</strong> Unlimited</li>
+                    </ul>
+                    <div class="product-price">
+                        Rp30.000 <span>/ bulan</span>
+                    </div>
+                    <button class="btn-buy" onclick="showCheckout('Paket Starter', 30000, ['Windows Server 2008'])">
+                        Beli Sekarang
+                    </button>
+                </div>
+
+                <!-- Paket 2 -->
+                <div class="product-card">
+                    <div class="product-icon">💻</div>
+                    <h3 class="product-title">Paket Business</h3>
+                    <ul class="product-specs">
+                        <li><strong>CPU:</strong> 2 Core</li>
+                        <li><strong>RAM:</strong> 2 GB</li>
+                        <li><strong>OS:</strong> Windows Server 2008 / 2012</li>
+                        <li><strong>Bandwidth:</strong> Unlimited</li>
+                    </ul>
+                    <div class="product-price">
+                        Rp50.000 <span>/ bulan</span>
+                    </div>
+                    <button class="btn-buy" onclick="showCheckout('Paket Business', 50000, ['Windows Server 2008', 'Windows Server 2012'])">
+                        Beli Sekarang
+                    </button>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="product-card">
+                    <div class="product-icon">🚀</div>
+                    <h3 class="product-title">Paket Premium</h3>
+                    <ul class="product-specs">
+                        <li><strong>CPU:</strong> 2 Core</li>
+                        <li><strong>RAM:</strong> 4 GB</li>
+                        <li><strong>OS:</strong> Windows Server 2008 / 2012 / 2019</li>
+                        <li><strong>Bandwidth:</strong> Unlimited</li>
+                    </ul>
+                    <div class="product-price">
+                        Rp80.000 <span>/ bulan</span>
+                    </div>
+                    <button class="btn-buy" onclick="showCheckout('Paket Premium', 80000, ['Windows Server 2008', 'Windows Server 2012', 'Windows Server 2019'])">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Pelayanan cepat dan VPS sangat stabil. Recommended untuk kebutuhan bisnis!"</p>
+                    <p class="testimonial-author">- Ahmad Ridwan, Jakarta</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Harga terjangkau dengan kualitas premium. Sudah 6 bulan pakai dan sangat puas!"</p>
+                    <p class="testimonial-author">- Siti Nurhaliza, Surabaya</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Admin responsif, proses aktivasi cepat. Best VPS provider!"</p>
+                    <p class="testimonial-author">- Budi Santoso, Bandung</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dashboard (Hidden by default) -->
+    <div id="dashboard-content" class="hidden">
+        <div class="container">
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h2>Dashboard Pesanan Saya</h2>
+                    <button class="btn-login" onclick="logout()">Logout</button>
+                </div>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID Order</th>
+                            <th>Paket</th>
+                            <th>Harga</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderTableBody">
+                        <tr>
+                            <td>#ORD001</td>
+                            <td>Paket Business</td>
+                            <td>Rp50.000</td>
+                            <td><span class="status-badge status-active">Aktif</span></td>
+                            <td>15 Okt 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (Hidden by default) -->
+    <div id="admin-dashboard" class="hidden">
+        <div class="container">
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h2>Admin Dashboard - Semua Pesanan</h2>
+                    <div>
+                        <button class="btn-buy" onclick="downloadCSV()" style="margin-right: 1rem;">Download CSV</button>
+                        <button class="btn-login" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>WhatsApp</th>
+                            <th>Paket</th>
+                            <th>OS</th>
+                            <th>Harga</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrderTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CloudVPS</h3>
+                <p>Penyedia VPS & RDP terpercaya dengan harga terjangkau dan kualitas terbaik.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <a href="https://wa.me/628123456789" target="_blank">📱 WhatsApp: +62 812-3456-789</a>
+                <a href="mailto:admin@cloudvps.com">📧 Email: admin@cloudvps.com</a>
+            </div>
+            <div class="footer-section">
+                <h3>Media Sosial</h3>
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 CloudVPS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2 style="color: #1e40af; margin-bottom: 2rem;">Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Belum punya akun? <a href="#" onclick="closeModal('loginModal'); showModal('register')" style="color: #3b82f6; font-weight: 600;">Daftar disini</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <h2 style="color: #1e40af; margin-bottom: 2rem;">Register</h2>
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Password</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit" class="btn-submit">Daftar</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Sudah punya akun? <a href="#" onclick="closeModal('registerModal'); showModal('login')" style="color: #3b82f6; font-weight: 600;">Login disini</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span>
+            <h2 style="color: #1e40af; margin-bottom: 2rem;">Form Pemesanan</h2>
+            <form onsubmit="handleCheckout(event)">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="checkoutName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="checkoutEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp</label>
+                    <input type="tel" id="checkoutWhatsapp" placeholder="628123456789" required>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Paket</label>
+                    <input type="text" id="checkoutPackage" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Pilih OS</label>
+                    <select id="checkoutOS" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Total Harga</label>
+                    <input type="text" id="checkoutPrice" readonly>
+                </div>
+                <button type="submit" class="btn-submit">Lanjut Pembayaran</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- QRIS Payment Modal -->
+    <div id="qrisModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('qrisModal')">&times;</span>
+            <div class="qris-container">
+                <h2 style="color: #1e40af; margin-bottom: 1rem;">Pembayaran QRIS BRI</h2>
+                <div class="qris-image">
+                    <p style="color: #64748b; text-align: center;">
+                        📱<br>
+                        Upload gambar QRIS<br>
+                        di sini
+                    </p>
+                </div>
+                <div class="qris-instructions">
+                    <h3 style="color: #1e40af; margin-bottom: 1rem;">Instruksi Pembayaran:</h3>
+                    <ol style="text-align: left; color: #334155;">
+                        <li>Scan QRIS menggunakan aplikasi mobile banking Anda</li>
+                        <li>Masukkan nominal sesuai harga paket</li>
+                        <li>Konfirmasi pembayaran</li>
+                        <li>Screenshot bukti pembayaran</li>
+                        <li>Kirim bukti ke WhatsApp admin: <strong>+62 812-3456-789</strong></li>
+                    </ol>
+                </div>
+                <p style="color: #64748b; margin-top: 1rem;">
+                    Setelah pembayaran dikonfirmasi, VPS Anda akan diaktifkan maksimal 1x24 jam.
+                </p>
+                <button class="btn-submit" onclick="closeModal('qrisModal'); alert('Terima kasih! Silakan konfirmasi pembayaran ke WhatsApp admin.')">
+                    Saya Sudah Bayar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Storage (In-memory)
+        let users = [
+            { username: 'admin', email: 'admin@cloudvps.com', password: 'admin123', role: 'admin' },
+            { username: 'user1', email: 'user1@example.com', password: 'user123', role: 'user' }
+        ];
+
+        let orders = [
+            {
+                id: 'ORD001',
+                name: 'Ahmad Ridwan',
+                email: 'ahmad@example.com',
+                whatsapp: '628123456789',
+                package: 'Paket Business',
+                os: 'Windows Server 2012',
+                price: 50000,
+                status: 'Aktif',
+                date: '15 Okt 2025'
+            }
+        ];
+
+        let currentUser = null;
+        let checkoutData = {};
+
+        // Modal Functions
+        function showModal(type) {
+            if (type === 'login') {
+                document.getElementById('loginModal').classList.add('active');
+            } else if (type === 'register') {
+                document.getElementById('registerModal').classList.add('active');
+            }
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Auth Functions
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                closeModal('loginModal');
+                
+                if (user.role === 'admin') {
+                    showAdminDashboard();
+                } else {
+                    showUserDashboard();
+                }
+                
+                alert(`Selamat datang, ${user.username}!`);
+                updateAuthButtons();
+            } else {
+                alert('Username atau password salah!');
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+
+            if (users.find(u => u.username === username)) {
+                alert('Username sudah digunakan!');
+                return;
+            }
+
+            if (users.find(u => u.email === email)) {
+                alert('Email sudah terdaftar!');
+                return;
+            }
+
+            users.push({
+                username,
+                email,
+                password,
+                role: 'user'
+            });
+
+            alert('Registrasi berhasil! Silakan login.');
+            closeModal('registerModal');
+            showModal('login');
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('main-content').classList.remove('hidden');
+            document.getElementById('dashboard-content').classList.add('hidden');
+            document.getElementById('admin-dashboard').classList.add('hidden');
+            updateAuthButtons();
+            alert('Anda telah logout.');
+        }
+
+        function updateAuthButtons() {
+            const authButtons = document.querySelector('.auth-buttons');
+            if (currentUser) {
+                authButtons.innerHTML = `
+                    <span style="color: white; margin-right: 1rem;">Hi, ${currentUser.username}</span>
+                    <button class="btn-login" onclick="${currentUser.role === 'admin' ? 'showAdminDashboard()' : 'showUserDashboard()'}">Dashboard</button>
+                    <button class="btn-register" onclick="logout()">Logout</button>
+                `;
+            } else {
+                authButtons.innerHTML = `
+                    <a href="#" class="btn-login" onclick="showModal('login')">Login</a>
+                    <a href="#" class="btn-register" onclick="showModal('register')">Register</a>
+                `;
+            }
+        }
+
+        // Checkout Functions
+        function showCheckout(packageName, price, osOptions) {
+            checkoutData = { packageName, price, osOptions };
+            
+            document.getElementById('checkoutPackage').value = packageName;
+            document.getElementById('checkoutPrice').value = `Rp${price.toLocaleString('id-ID')}`;
+            
+            const osSelect = document.getElementById('checkoutOS');
+            osSelect.innerHTML = '';
+            osOptions.forEach(os => {
+                const option = document.createElement('option');
+                option.value = os;
+                option.textContent = os;
+                osSelect.appendChild(option);
+            });
+            
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function handleCheckout(e) {
+            e.preventDefault();
+            
+            const orderData = {
+                id: `ORD${String(orders.length + 1).padStart(3, '0')}`,
+                name: document.getElementById('checkoutName').value,
+                email: document.getElementById('checkoutEmail').value,
+                whatsapp: document.getElementById('checkoutWhatsapp').value,
+                package: checkoutData.packageName,
+                os: document.getElementById('checkoutOS').value,
+                price: checkoutData.price,
+                status: 'Belum Bayar',
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+            };
+            
+            orders.push(orderData);
+            
+            closeModal('checkoutModal');
+            document.getElementById('qrisModal').classList.add('active');
+            
+            // Reset form
+            document.getElementById('checkoutName').value = '';
+            document.getElementById('checkoutEmail').value = '';
+            document.getElementById('checkoutWhatsapp').value = '';
+        }
+
+        // Dashboard Functions
+        function showUserDashboard() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('admin-dashboard').classList.add('hidden');
+            document.getElementById('dashboard-content').classList.remove('hidden');
+            
+            const tableBody = document.getElementById('orderTableBody');
+            const userOrders = orders.filter(order => 
+                currentUser && order.email === currentUser.email
+            );
+            
+            if (userOrders.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #64748b;">Belum ada pesanan</td></tr>';
+            } else {
+                tableBody.innerHTML = userOrders.map(order => `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${order.package}</td>
+                        <td>Rp${order.price.toLocaleString('id-ID')}</td>
+                        <td><span class="status-badge status-${order.status === 'Aktif' ? 'active' : order.status === 'Sudah Bayar' ? 'paid' : 'pending'}">${order.status}</span></td>
+                        <td>${order.date}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('dashboard-content').classList.add('hidden');
+            document.getElementById('admin-dashboard').classList.remove('hidden');
+            
+            renderAdminOrders();
+        }
+
+        function renderAdminOrders() {
+            const tableBody = document.getElementById('adminOrderTableBody');
+            
+            if (orders.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: #64748b;">Belum ada pesanan</td></tr>';
+            } else {
+                tableBody.innerHTML = orders.map((order, index) => `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${order.name}</td>
+                        <td>${order.email}</td>
+                        <td>${order.whatsapp}</td>
+                        <td>${order.package}</td>
+                        <td>${order.os}</td>
+                        <td>Rp${order.price.toLocaleString('id-ID')}</td>
+                        <td>
+                            <select onchange="updateOrderStatus(${index}, this.value)" style="padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid #e2e8f0;">
+                                <option value="Belum Bayar" ${order.status === 'Belum Bayar' ? 'selected' : ''}>Belum Bayar</option>
+                                <option value="Sudah Bayar" ${order.status === 'Sudah Bayar' ? 'selected' : ''}>Sudah Bayar</option>
+                                <option value="Aktif" ${order.status === 'Aktif' ? 'selected' : ''}>Aktif</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button onclick="deleteOrder(${index})" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Hapus</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function updateOrderStatus(index, newStatus) {
+            orders[index].status = newStatus;
+            alert('Status pesanan berhasil diupdate!');
+            renderAdminOrders();
+        }
+
+        function deleteOrder(index) {
+            if (confirm('Apakah Anda yakin ingin menghapus pesanan ini?')) {
+                orders.splice(index, 1);
+                alert('Pesanan berhasil dihapus!');
+                renderAdminOrders();
+            }
+        }
+
+        function downloadCSV() {
+            let csv = 'ID,Nama,Email,WhatsApp,Paket,OS,Harga,Status,Tanggal\n';
+            
+            orders.forEach(order => {
+                csv += `${order.id},${order.name},${order.email},${order.whatsapp},${order.package},${order.os},${order.price},${order.status},${order.date}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `orders_${new Date().getTime()}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function showPage(page) {
+            if (page === 'home') {
+                document.getElementById('main-content').classList.remove('hidden');
+                document.getElementById('dashboard-content').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.add('hidden');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthButtons();
+        });
+    </script>
+</body>
+</html>
